@@ -16,7 +16,7 @@ namespace Doodler
         private List<List<Point>> lines;
         private List<Color> lineColours;
 
-        private bool IsOpen = true;
+        private bool IsOpen = false;
         private KeyHandler ghk;
         private Graphics g;
         private bool isPainting;
@@ -51,6 +51,12 @@ namespace Doodler
             g = DrawPanel.CreateGraphics();
             ghk = new KeyHandler(Keys.Scroll, this);
             ghk.Register();
+
+            //Hide on startup
+            BeginInvoke(new MethodInvoker(delegate
+            {
+                Hide();
+            }));
         }
 
         private void StartDrawing(object sender, MouseEventArgs e)

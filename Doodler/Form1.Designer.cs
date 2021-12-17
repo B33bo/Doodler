@@ -30,13 +30,13 @@ namespace Doodler
         private void InitializeComponent()
         {
             this.DrawPanel = new System.Windows.Forms.Panel();
+            this.Minimize = new System.Windows.Forms.PictureBox();
             this.colourPicker = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
-            this.Minimize = new System.Windows.Forms.PictureBox();
             this.DrawPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Minimize)).BeginInit();
             this.SuspendLayout();
             // 
             // DrawPanel
@@ -53,6 +53,18 @@ namespace Doodler
             this.DrawPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDrawing);
             this.DrawPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draw);
             this.DrawPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDrawing);
+            // 
+            // Minimize
+            // 
+            this.Minimize.BackColor = System.Drawing.Color.Maroon;
+            this.Minimize.Image = global::Doodler.Properties.Resources.Minus;
+            this.Minimize.Location = new System.Drawing.Point(42, 12);
+            this.Minimize.Name = "Minimize";
+            this.Minimize.Size = new System.Drawing.Size(24, 24);
+            this.Minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Minimize.TabIndex = 3;
+            this.Minimize.TabStop = false;
+            this.Minimize.Click += new System.EventHandler(this.MinimiseButton);
             // 
             // colourPicker
             // 
@@ -76,18 +88,6 @@ namespace Doodler
             this.close.TabStop = false;
             this.close.Click += new System.EventHandler(this.CloseGame);
             // 
-            // Minimize
-            // 
-            this.Minimize.BackColor = System.Drawing.Color.Maroon;
-            this.Minimize.Image = global::Doodler.Properties.Resources.Minus;
-            this.Minimize.Location = new System.Drawing.Point(42, 12);
-            this.Minimize.Name = "Minimize";
-            this.Minimize.Size = new System.Drawing.Size(24, 24);
-            this.Minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Minimize.TabIndex = 3;
-            this.Minimize.TabStop = false;
-            this.Minimize.Click += new System.EventHandler(this.MinimiseButton);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,9 +99,9 @@ namespace Doodler
             this.Name = "Form1";
             this.Text = "Form1";
             this.DrawPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colourPicker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Minimize)).EndInit();
             this.ResumeLayout(false);
 
         }
