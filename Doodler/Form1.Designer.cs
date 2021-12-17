@@ -29,6 +29,7 @@ namespace Doodler
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.DrawPanel = new System.Windows.Forms.Panel();
             this.Minimize = new System.Windows.Forms.PictureBox();
             this.colourPicker = new System.Windows.Forms.PictureBox();
@@ -96,6 +97,7 @@ namespace Doodler
             this.ClientSize = new System.Drawing.Size(826, 545);
             this.Controls.Add(this.DrawPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.DrawPanel.ResumeLayout(false);
