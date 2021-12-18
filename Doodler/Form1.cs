@@ -35,9 +35,18 @@ namespace Doodler
         }
         private static Form1 _doodler;
 
+
+        private Control[] colourObjects;
+
         public Form1()
         {
             InitializeComponent();
+            colourObjects = new Control[]
+            {
+                black, grey, silver, white,
+                red, blue, green, yellow,
+            };
+
             lines = new List<List<Point>>();
             lineColours = new List<Color>();
 
@@ -46,11 +55,13 @@ namespace Doodler
             Size = new Size((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
             DrawPanel.Size = Size;
             TransparencyKey = BackColor;
-            pen = new Pen(Color.FromArgb(200, Color.Black), 2.5f);
+            pen = new Pen(ColourOf("black"), 2.5f);
             DrawPanel.BackColor = Color.Transparent;
             g = DrawPanel.CreateGraphics();
             ghk = new KeyHandler(Keys.Scroll, this);
             ghk.Register();
+
+            TopMost = true;
 
             //Hide on startup
             BeginInvoke(new MethodInvoker(delegate
@@ -145,6 +156,54 @@ namespace Doodler
             Invalidate();
             lines = new List<List<Point>>();
             lineColours = new List<Color>();
+        }
+
+        private void ChangeColour(object sender, EventArgs e)
+        {
+            pen.Color = ColourOf(((Control)sender).Name);
+            ColourBox.Hide();
+
+            for (int i = 0; i < colourObjects.Length; i++)
+            {
+                colourObjects[i].Hide();
+            }
+
+            colour_Picker.BackColor = pen.Color;
+        }
+
+        private Color ColourOf(string colour)
+        {
+            switch (colour)
+            {
+                default:
+                    return pen.Color;
+                case "black":
+                    return Color.FromArgb(100, Color.Black);
+                case "grey":
+                    return Color.FromArgb(200, Color.Gray);
+                case "silver":
+                    return Color.FromArgb(200, Color.LightGray);
+                case "white":
+                    return Color.FromArgb(200, Color.White);
+                case "red":
+                    return Color.FromArgb(200, Color.Red);
+                case "blue":
+                    return Color.FromArgb(200, Color.Blue);
+                case "green":
+                    return Color.FromArgb(200, Color.Green);
+                case "yellow":
+                    return Color.FromArgb(200, Color.Yellow);
+            }
+        }
+
+        private void ColourPopup(object sender, EventArgs e)
+        {
+            ColourBox.Show();
+
+            for (int i = 0; i < colourObjects.Length; i++)
+            {
+                colourObjects[i].Show();
+            }
         }
 
         protected override void WndProc(ref Message m)

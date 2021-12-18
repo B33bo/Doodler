@@ -121,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bin.png" />
+    <Content Include="Border.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Doodler.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

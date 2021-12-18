@@ -31,11 +31,29 @@ namespace Doodler
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.DrawPanel = new System.Windows.Forms.Panel();
+            this.yellow = new System.Windows.Forms.PictureBox();
+            this.green = new System.Windows.Forms.PictureBox();
+            this.blue = new System.Windows.Forms.PictureBox();
+            this.red = new System.Windows.Forms.PictureBox();
+            this.white = new System.Windows.Forms.PictureBox();
+            this.silver = new System.Windows.Forms.PictureBox();
+            this.grey = new System.Windows.Forms.PictureBox();
+            this.black = new System.Windows.Forms.PictureBox();
+            this.ColourBox = new System.Windows.Forms.PictureBox();
             this.bin = new System.Windows.Forms.PictureBox();
             this.Minimize = new System.Windows.Forms.PictureBox();
             this.colour_Picker = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.DrawPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.yellow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.green)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.red)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.white)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silver)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grey)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.black)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColourBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colour_Picker)).BeginInit();
@@ -45,6 +63,15 @@ namespace Doodler
             // DrawPanel
             // 
             this.DrawPanel.BackColor = System.Drawing.Color.Maroon;
+            this.DrawPanel.Controls.Add(this.yellow);
+            this.DrawPanel.Controls.Add(this.green);
+            this.DrawPanel.Controls.Add(this.blue);
+            this.DrawPanel.Controls.Add(this.red);
+            this.DrawPanel.Controls.Add(this.white);
+            this.DrawPanel.Controls.Add(this.silver);
+            this.DrawPanel.Controls.Add(this.grey);
+            this.DrawPanel.Controls.Add(this.black);
+            this.DrawPanel.Controls.Add(this.ColourBox);
             this.DrawPanel.Controls.Add(this.bin);
             this.DrawPanel.Controls.Add(this.Minimize);
             this.DrawPanel.Controls.Add(this.colour_Picker);
@@ -57,6 +84,96 @@ namespace Doodler
             this.DrawPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartDrawing);
             this.DrawPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draw);
             this.DrawPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDrawing);
+            // 
+            // yellow
+            // 
+            this.yellow.BackColor = System.Drawing.Color.Yellow;
+            this.yellow.Location = new System.Drawing.Point(138, 117);
+            this.yellow.Name = "yellow";
+            this.yellow.Size = new System.Drawing.Size(35, 35);
+            this.yellow.TabIndex = 13;
+            this.yellow.TabStop = false;
+            this.yellow.Click += new System.EventHandler(this.ChangeColour);
+            // 
+            // green
+            // 
+            this.green.BackColor = System.Drawing.Color.Lime;
+            this.green.Location = new System.Drawing.Point(97, 117);
+            this.green.Name = "green";
+            this.green.Size = new System.Drawing.Size(35, 35);
+            this.green.TabIndex = 12;
+            this.green.TabStop = false;
+            this.green.Click += new System.EventHandler(this.ChangeColour);
+            // 
+            // blue
+            // 
+            this.blue.BackColor = System.Drawing.Color.Blue;
+            this.blue.Location = new System.Drawing.Point(56, 117);
+            this.blue.Name = "blue";
+            this.blue.Size = new System.Drawing.Size(35, 35);
+            this.blue.TabIndex = 11;
+            this.blue.TabStop = false;
+            this.blue.Click += new System.EventHandler(this.ChangeColour);
+            // 
+            // red
+            // 
+            this.red.BackColor = System.Drawing.Color.Red;
+            this.red.Location = new System.Drawing.Point(15, 117);
+            this.red.Name = "red";
+            this.red.Size = new System.Drawing.Size(35, 35);
+            this.red.TabIndex = 10;
+            this.red.TabStop = false;
+            this.red.Click += new System.EventHandler(this.ChangeColour);
+            // 
+            // white
+            // 
+            this.white.BackColor = System.Drawing.Color.White;
+            this.white.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.white.Location = new System.Drawing.Point(138, 76);
+            this.white.Name = "white";
+            this.white.Size = new System.Drawing.Size(35, 35);
+            this.white.TabIndex = 9;
+            this.white.TabStop = false;
+            this.white.Click += new System.EventHandler(this.ChangeColour);
+            // 
+            // silver
+            // 
+            this.silver.BackColor = System.Drawing.Color.LightGray;
+            this.silver.Location = new System.Drawing.Point(97, 76);
+            this.silver.Name = "silver";
+            this.silver.Size = new System.Drawing.Size(35, 35);
+            this.silver.TabIndex = 8;
+            this.silver.TabStop = false;
+            this.silver.Click += new System.EventHandler(this.ChangeColour);
+            // 
+            // grey
+            // 
+            this.grey.BackColor = System.Drawing.Color.DimGray;
+            this.grey.Location = new System.Drawing.Point(56, 76);
+            this.grey.Name = "grey";
+            this.grey.Size = new System.Drawing.Size(35, 35);
+            this.grey.TabIndex = 7;
+            this.grey.TabStop = false;
+            this.grey.Click += new System.EventHandler(this.ChangeColour);
+            // 
+            // black
+            // 
+            this.black.BackColor = System.Drawing.Color.Black;
+            this.black.Location = new System.Drawing.Point(15, 76);
+            this.black.Name = "black";
+            this.black.Size = new System.Drawing.Size(35, 35);
+            this.black.TabIndex = 6;
+            this.black.TabStop = false;
+            this.black.Click += new System.EventHandler(this.ChangeColour);
+            // 
+            // ColourBox
+            // 
+            this.ColourBox.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.ColourBox.Location = new System.Drawing.Point(12, 74);
+            this.ColourBox.Name = "ColourBox";
+            this.ColourBox.Size = new System.Drawing.Size(165, 80);
+            this.ColourBox.TabIndex = 5;
+            this.ColourBox.TabStop = false;
             // 
             // bin
             // 
@@ -90,7 +207,7 @@ namespace Doodler
             this.colour_Picker.Size = new System.Drawing.Size(24, 24);
             this.colour_Picker.TabIndex = 1;
             this.colour_Picker.TabStop = false;
-            this.colour_Picker.Click += new System.EventHandler(this.ColourPicker);
+            this.colour_Picker.Click += new System.EventHandler(this.ColourPopup);
             // 
             // close
             // 
@@ -108,7 +225,7 @@ namespace Doodler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(826, 545);
             this.Controls.Add(this.DrawPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -116,6 +233,15 @@ namespace Doodler
             this.Name = "Form1";
             this.Text = "Form1";
             this.DrawPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.yellow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.green)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.red)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.white)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silver)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grey)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.black)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColourBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colour_Picker)).EndInit();
@@ -131,6 +257,15 @@ namespace Doodler
         private System.Windows.Forms.PictureBox colour_Picker;
         private System.Windows.Forms.PictureBox Minimize;
         private System.Windows.Forms.PictureBox bin;
+        private System.Windows.Forms.PictureBox black;
+        private System.Windows.Forms.PictureBox ColourBox;
+        private System.Windows.Forms.PictureBox grey;
+        private System.Windows.Forms.PictureBox silver;
+        private System.Windows.Forms.PictureBox white;
+        private System.Windows.Forms.PictureBox yellow;
+        private System.Windows.Forms.PictureBox green;
+        private System.Windows.Forms.PictureBox blue;
+        private System.Windows.Forms.PictureBox red;
     }
 }
 
