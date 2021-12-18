@@ -46,7 +46,7 @@ namespace Doodler
             Size = new Size((int)SystemParameters.VirtualScreenWidth, (int)SystemParameters.VirtualScreenHeight);
             DrawPanel.Size = Size;
             TransparencyKey = BackColor;
-            pen = new Pen(Color.FromArgb(200, Color.Black), 5);
+            pen = new Pen(Color.FromArgb(200, Color.Black), 2.5f);
             DrawPanel.BackColor = Color.Transparent;
             g = DrawPanel.CreateGraphics();
             ghk = new KeyHandler(Keys.Scroll, this);
@@ -125,7 +125,7 @@ namespace Doodler
             ColorDialog c = new ColorDialog();
             if (c.ShowDialog() == DialogResult.OK)
             {
-                colourPicker.BackColor = c.Color;
+                colour_Picker.BackColor = c.Color;
                 pen.Color = c.Color;
             }
         }
@@ -138,6 +138,13 @@ namespace Doodler
         private void MinimiseButton(object sender, EventArgs e)
         {
             HandleHotkey();
+        }
+
+        private void Clear(object sender, EventArgs e)
+        {
+            Invalidate();
+            lines = new List<List<Point>>();
+            lineColours = new List<Color>();
         }
 
         protected override void WndProc(ref Message m)

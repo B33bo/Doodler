@@ -120,6 +120,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bin.png" />
     <Content Include="Doodler.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
