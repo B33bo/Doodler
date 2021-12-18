@@ -31,6 +31,7 @@ namespace Doodler
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.DrawPanel = new System.Windows.Forms.Panel();
+            this.Save = new System.Windows.Forms.PictureBox();
             this.yellow = new System.Windows.Forms.PictureBox();
             this.green = new System.Windows.Forms.PictureBox();
             this.blue = new System.Windows.Forms.PictureBox();
@@ -45,6 +46,7 @@ namespace Doodler
             this.colour_Picker = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.DrawPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Save)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.green)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blue)).BeginInit();
@@ -63,6 +65,7 @@ namespace Doodler
             // DrawPanel
             // 
             this.DrawPanel.BackColor = System.Drawing.Color.Maroon;
+            this.DrawPanel.Controls.Add(this.Save);
             this.DrawPanel.Controls.Add(this.yellow);
             this.DrawPanel.Controls.Add(this.green);
             this.DrawPanel.Controls.Add(this.blue);
@@ -85,10 +88,23 @@ namespace Doodler
             this.DrawPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draw);
             this.DrawPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StopDrawing);
             // 
+            // Save
+            // 
+            this.Save.BackColor = System.Drawing.Color.Transparent;
+            this.Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Save.Image = global::Doodler.Properties.Resources.Save;
+            this.Save.Location = new System.Drawing.Point(12, 72);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(24, 24);
+            this.Save.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Save.TabIndex = 14;
+            this.Save.TabStop = false;
+            this.Save.Click += new System.EventHandler(this.SaveButton);
+            // 
             // yellow
             // 
             this.yellow.BackColor = System.Drawing.Color.Yellow;
-            this.yellow.Location = new System.Drawing.Point(138, 117);
+            this.yellow.Location = new System.Drawing.Point(199, 56);
             this.yellow.Name = "yellow";
             this.yellow.Size = new System.Drawing.Size(35, 35);
             this.yellow.TabIndex = 13;
@@ -98,7 +114,7 @@ namespace Doodler
             // green
             // 
             this.green.BackColor = System.Drawing.Color.Lime;
-            this.green.Location = new System.Drawing.Point(97, 117);
+            this.green.Location = new System.Drawing.Point(158, 56);
             this.green.Name = "green";
             this.green.Size = new System.Drawing.Size(35, 35);
             this.green.TabIndex = 12;
@@ -108,7 +124,7 @@ namespace Doodler
             // blue
             // 
             this.blue.BackColor = System.Drawing.Color.Blue;
-            this.blue.Location = new System.Drawing.Point(56, 117);
+            this.blue.Location = new System.Drawing.Point(117, 56);
             this.blue.Name = "blue";
             this.blue.Size = new System.Drawing.Size(35, 35);
             this.blue.TabIndex = 11;
@@ -118,7 +134,7 @@ namespace Doodler
             // red
             // 
             this.red.BackColor = System.Drawing.Color.Red;
-            this.red.Location = new System.Drawing.Point(15, 117);
+            this.red.Location = new System.Drawing.Point(76, 56);
             this.red.Name = "red";
             this.red.Size = new System.Drawing.Size(35, 35);
             this.red.TabIndex = 10;
@@ -129,7 +145,7 @@ namespace Doodler
             // 
             this.white.BackColor = System.Drawing.Color.White;
             this.white.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.white.Location = new System.Drawing.Point(138, 76);
+            this.white.Location = new System.Drawing.Point(199, 15);
             this.white.Name = "white";
             this.white.Size = new System.Drawing.Size(35, 35);
             this.white.TabIndex = 9;
@@ -139,7 +155,7 @@ namespace Doodler
             // silver
             // 
             this.silver.BackColor = System.Drawing.Color.LightGray;
-            this.silver.Location = new System.Drawing.Point(97, 76);
+            this.silver.Location = new System.Drawing.Point(158, 15);
             this.silver.Name = "silver";
             this.silver.Size = new System.Drawing.Size(35, 35);
             this.silver.TabIndex = 8;
@@ -149,7 +165,7 @@ namespace Doodler
             // grey
             // 
             this.grey.BackColor = System.Drawing.Color.DimGray;
-            this.grey.Location = new System.Drawing.Point(56, 76);
+            this.grey.Location = new System.Drawing.Point(117, 15);
             this.grey.Name = "grey";
             this.grey.Size = new System.Drawing.Size(35, 35);
             this.grey.TabIndex = 7;
@@ -159,7 +175,7 @@ namespace Doodler
             // black
             // 
             this.black.BackColor = System.Drawing.Color.Black;
-            this.black.Location = new System.Drawing.Point(15, 76);
+            this.black.Location = new System.Drawing.Point(76, 15);
             this.black.Name = "black";
             this.black.Size = new System.Drawing.Size(35, 35);
             this.black.TabIndex = 6;
@@ -169,7 +185,7 @@ namespace Doodler
             // ColourBox
             // 
             this.ColourBox.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.ColourBox.Location = new System.Drawing.Point(12, 74);
+            this.ColourBox.Location = new System.Drawing.Point(73, 13);
             this.ColourBox.Name = "ColourBox";
             this.ColourBox.Size = new System.Drawing.Size(165, 80);
             this.ColourBox.TabIndex = 5;
@@ -233,6 +249,7 @@ namespace Doodler
             this.Name = "Form1";
             this.Text = "Form1";
             this.DrawPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Save)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yellow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.green)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.blue)).EndInit();
@@ -266,6 +283,7 @@ namespace Doodler
         private System.Windows.Forms.PictureBox green;
         private System.Windows.Forms.PictureBox blue;
         private System.Windows.Forms.PictureBox red;
+        private System.Windows.Forms.PictureBox Save;
     }
 }
 

@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.IO;
+
 
 namespace Doodler
 {
@@ -23,6 +27,7 @@ namespace Doodler
         private Pen pen;
         int lastX, lastY;
         int loops;
+        static string filePosition;
 
         public static Form1 Doodler
         {
@@ -61,7 +66,12 @@ namespace Doodler
             ghk = new KeyHandler(Keys.Scroll, this);
             ghk.Register();
 
-            TopMost = true;
+            //TopMost = true;
+
+            filePosition = Environment.ExpandEnvironmentVariables(@"%appdata%\Doodler");
+
+            if (!Directory.Exists(filePosition))
+                Directory.CreateDirectory(filePosition);
 
             //Hide on startup
             BeginInvoke(new MethodInvoker(delegate
@@ -91,14 +101,14 @@ namespace Doodler
 
             loops++;
 
-            if (loops % 10 != 0)
-                return;
+            //if (loops % 10 != 0)
+             //   return;
 
             loops = 0;
             g = DrawPanel.CreateGraphics();
 
             g.DrawLine(pen, new Point(lastX, lastY), new Point(e.X, e.Y));
-            lines[lines.Count-1].Add(new Point(e.X, e.Y));
+            lines[lines.Count - 1].Add(new Point(e.X, e.Y));
 
             lastX = e.X;
             lastY = e.Y;
@@ -143,6 +153,7 @@ namespace Doodler
 
         private void CloseGame(object sender, EventArgs e)
         {
+            SaveCurrent(GetFilename());
             Close();
         }
 
@@ -153,9 +164,76 @@ namespace Doodler
 
         private void Clear(object sender, EventArgs e)
         {
+            SaveCurrent("");
+
             Invalidate();
             lines = new List<List<Point>>();
             lineColours = new List<Color>();
+        }
+
+        private void SaveCurrent(string position)
+        {
+            if (position == "")
+                position = GetFilename();
+
+            position = position.Replace(@"\\", @"\");
+
+            Rectangle bounds = Screen.GetBounds(Point.Empty);
+            using (Bitmap bitmap = new Bitmap(bounds.Width, bounds.Height))
+            {
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    g.CopyFromScreen(Point.Empty, Point.Empty, bounds.Size);
+                }
+
+                string fullpath = position;
+
+                bitmap.Save(fullpath, ImageFormat.Png);
+            }
+
+            //ScreenCapture sc = new ScreenCapture();
+
+            //sc.CaptureWindowToFile(this.Handle, position, ImageFormat.Png);
+
+            // Save the result.
+
+            //SaveImage(bm, position == "" ? GetFilename() : position);
+        }
+
+        private string GetFilename()
+        {
+            return filePosition + @"\" + DateTime.Now.ToString("u").Replace(" ", ".").Replace(":", ".") + ".png";
+        }
+
+        public void SaveImage(Image image, string filename)
+        {
+            string extension = Path.GetExtension(filename);
+            switch (extension.ToLower())
+            {
+                case ".bmp":
+                    image.Save(filename, ImageFormat.Bmp);
+                    break;
+                case ".exif":
+                    image.Save(filename, ImageFormat.Exif);
+                    break;
+                case ".gif":
+                    image.Save(filename, ImageFormat.Gif);
+                    break;
+                case ".jpg":
+                case ".jpeg":
+                    image.Save(filename, ImageFormat.Jpeg);
+                    break;
+                case ".png":
+                    image.Save(filename, ImageFormat.Png);
+                    break;
+                case ".tif":
+                case ".tiff":
+                    image.Save(filename, ImageFormat.Tiff);
+                    break;
+                default:
+                    image.Save(filename + ".png", ImageFormat.Png);
+                    break;
+            }
         }
 
         private void ChangeColour(object sender, EventArgs e)
@@ -203,6 +281,15 @@ namespace Doodler
             for (int i = 0; i < colourObjects.Length; i++)
             {
                 colourObjects[i].Show();
+            }
+        }
+
+        private void SaveButton(object sender, EventArgs e)
+        {
+            SaveFileDialog file = new SaveFileDialog();
+            if (file.ShowDialog() == DialogResult.OK)
+            {
+                SaveCurrent(file.FileName);
             }
         }
 
